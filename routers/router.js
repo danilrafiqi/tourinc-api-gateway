@@ -1,7 +1,6 @@
 var express = require("express");
 var router = express.Router();
 var memberRouter = require("./memberService");
-var memberAuthRouter = require("./memberAuthService");
 var guestRouter = require("./guestService");
 var orderRouter = require("./orderService");
 var smsRouter = require("./smsService");
@@ -17,7 +16,6 @@ router.use((req, res, next) => {
 });
 
 router.use("/api/v1/member", memberRouter);
-router.use("/api/v1/member-auth", memberAuthRouter);
 router.use("/api/v1/guest", guestRouter);
 router.use("/api/v1/order", orderRouter);
 router.use("/api/v1/sms", smsRouter);

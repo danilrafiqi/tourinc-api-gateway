@@ -1,11 +1,12 @@
 var express = require("express");
 var router = express.Router();
 const apiAdapter = require("./apiAdapter");
-// const isAuthorized = require('../controller/requestAuthenticator')
+const isAuthorized = require("../midleware/requestAuthenticator");
 
 const BASE_URL = "http://localhost:8000/api/order";
 const api = apiAdapter(BASE_URL);
 
+router.use(isAuthorized);
 router.get("/", (req, res) => {
   api.get(req.path).then(resp => {
     res.send(resp.data);
